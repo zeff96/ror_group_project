@@ -9,9 +9,9 @@
 	</div>
 	<span class="d-block mb-3">Cooking Time: <%= @recipe.cooking_time %></span>
 	<span>Steps goes here...</span>
-	<div>
-		<%= link_to 'Generate shopping list' %>
-		<%= link_to 'Add ingredient' %>
+	<div class="d-flex justify-content-between align-items-center mt-3">
+		<%= link_to 'Generate shopping list', class: 'btn btn-outline-dark btn-sm' %>
+		<%= link_to 'Add ingredient', class: 'btn btn-outline-dark btn-sm' %>
 	</div>
 	<hr/>
 </section>
