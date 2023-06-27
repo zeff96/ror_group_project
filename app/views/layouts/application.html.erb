@@ -11,6 +11,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <br>
+      <%= render 'shared/alerts' %>
+      <%= yield %>
+    </div>
   </body>
 </html>
