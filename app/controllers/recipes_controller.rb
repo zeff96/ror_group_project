@@ -26,6 +26,12 @@ class RecipesController < ApplicationController
 		end
 	end
 
+	def destroy
+		@recipe.destroy
+
+		flash[:notice] = 'Recipe deleted successfully!'
+	end
+
 	private
 
 	def recipe_params
