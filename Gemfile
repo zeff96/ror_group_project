@@ -5,7 +5,7 @@ ruby "3.2.2"
 
 gem 'devise'
 
-gem 'bullet', group: 'development'
+gem 'bullet'
 
 gem 'bootstrap'
 
