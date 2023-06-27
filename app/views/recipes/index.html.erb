@@ -1,4 +1,4 @@
-<section>
+<section class="my-3 p-3">
 	<% @recipes.each do |recipe| %>
 		<% unless recipe.private? %>
 			<%= render 'recipe', recipe: recipe %>
