@@ -3,7 +3,9 @@ module Visible
 
 	VALID_STATUSES = %w[public private]
 
-	validates :status, inclusion: { in: VALID_STATUSES }
+	included do
+		validates :status, inclusion: { in: VALID_STATUSES }
+	end
 
 	def private?
 		status == 'private'
