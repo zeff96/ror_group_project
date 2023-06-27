@@ -16,9 +16,10 @@ class RecipesController < ApplicationController
 
 		respond_to do |format|
 			if @recipe.save
-				format.html { redirect_to recipe_path, notice: 'Recipe created succesfully!' }
+				format.html { redirect_to recipe_path(@recipe), notice: 'Recipe created succesfully!' }
 				format.json { render :show, status: :created, location: @recipe }
 			else
+				puts @recipe.errors.full_messages.inspect
 				format.html { redirect_to new_recipe_path, alert: 'Recipe not created!' }
 				format.json { render json: @recipe.errors, status: :unprocessable_entity }
 			end
@@ -28,6 +29,6 @@ class RecipesController < ApplicationController
 	private
 
 	def recipe_params
-		params.require(:recipe).permit(:name, :cooking_time, :preparation_time, :description, :status)
+		params.require(:recipe).permit(:name, :cooking_time, :preparation_time, :description, :status, :user_id)
 	end
 end
