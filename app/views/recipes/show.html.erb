@@ -10,7 +10,34 @@
 	<span class="d-block mb-3">Cooking Time: <%= @recipe.cooking_time %></span>
 	<span>Steps goes here...</span>
 	<div class="d-flex justify-content-between align-items-center mt-3">
-		<%= link_to 'Generate shopping list', class: 'btn btn-outline-dark btn-sm' %>
+		<button type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+		  Generate shopping list
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h1 class="modal-title fs-5" id="exampleModalLabel">Generate shopping list</h1>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body">
+		      	<span>Choose an inventory to use</span>
+		        <div class="dropdown-center">
+						  <button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+						    ..Select inventory..
+						  </button>
+						  <ul class="dropdown-menu">
+						    <li><a class="dropdown-item" href="#">Action</a></li>
+						    <li><a class="dropdown-item" href="#">Action two</a></li>
+						    <li><a class="dropdown-item" href="#">Action three</a></li>
+						  </ul>
+						</div>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 		<%= link_to 'Add ingredient', class: 'btn btn-outline-dark btn-sm' %>
 	</div>
 	<hr/>
