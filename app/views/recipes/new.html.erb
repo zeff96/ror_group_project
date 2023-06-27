@@ -3,12 +3,8 @@
 
 <%= form_with model: @recipe, url: recipes_path, local_scope: true do |f| %>
 	<div>
-		<div class="dropdown">
-		  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-		    Dropdown button
-		  </button>
-		  <%= f.select :status, %w[public private], selected: 'public'%>
-		</div>
+		<%= f.label :status %>
+		<%= f.select :status, %w[public private], selected: 'public'%>
 	</div>
 	<br>
 	<div>
@@ -17,12 +13,12 @@
 	</div>
 	<br>
 	<div>
-		<%= f.label :Cooking Time %>
+		<%= f.label :cooking_time, "Cooking Time" %>
 		<%= f.text_field :cooking_time, autofocus: true, autocomplete: 'cooking_time', class: 'form-control' %>
 	</div>
 	<br>
 	<div>
-		<%= f.label :Preparation Time %>
+		<%= f.label :preparation_time, "Preparation Time" %>
 		<%= f.text_field :preparation_time, autofocus: true, autocomplete: 'preparation_time', class: 'form-control' %>
 	</div>
 	<br>
