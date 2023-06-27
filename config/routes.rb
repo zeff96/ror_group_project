@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :recipes, only: %i[index show]
+  shallow do
+    resources :recipes
+  end
 end
