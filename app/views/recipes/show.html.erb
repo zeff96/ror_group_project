@@ -1,0 +1,12 @@
+<section>
+	<h2><%= @recipe.name %></h2>
+	<div>
+		<span>Preparation Time: <%= @recipe.preparation_time %></span>
+		<div class="form-check form-switch form-check-reverse">
+		  <input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
+		  <label class="form-check-label" for="flexSwitchCheckReverse">Public</label>
+		</div>
+	</div>
+	<span>Cooking Time: <%= @recipe.cooking_time %></span>
+	<span>Steps goes here...</span>
+</section>
