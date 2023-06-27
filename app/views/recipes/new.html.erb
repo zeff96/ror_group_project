@@ -1,6 +1,6 @@
 <br>
-<h2>Add New Recipe</h2>
-
+<h2 class="text-center">Add New Recipe</h2>
+<br>
 <%= form_with model: @recipe, url: recipes_path, local_scope: true do |f| %>
 	<div>
 		<%= f.label :status %>
@@ -24,7 +24,7 @@
 	<br>
 	<div>
 		<%= f.label :Description %>
-		<%= f.text_field :description, autofocus: true, autocomplete: 'description', class: 'form-control' %>
+		<%= f.text_area :description, autofocus: true, autocomplete: 'description', class: 'form-control' %>
 	</div>
 	<br>
 	<div>
