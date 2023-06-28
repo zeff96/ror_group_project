@@ -40,7 +40,10 @@ class RecipesController < ApplicationController
 	end
 
 	def new_food
-		@food = Food.new
+		@food = Food.new(food_params)
+		quantity = params[:food][:quantity]
+		recipe_foods = RecipeFoods.new(recipe_id: @recipe.id, food_id: @food.id, quantity: quantity)
+		recipe_foods.save
 
 		render :new_food
 	end
@@ -50,7 +53,7 @@ class RecipesController < ApplicationController
 
 		if @food.save
 			@recipe = Recipe.find(params[:recipe_id])
-			@recipe.foods << food
+			@recipe.foods << @food
 
 			redirect_to recipe_path(@recipe)
 		else
