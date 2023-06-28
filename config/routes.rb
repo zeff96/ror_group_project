@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   end
 
   shallow do
-    resources :recipes
+    resources :recipes do
+      resources :foods
+    end
   end
 end

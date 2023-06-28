@@ -39,9 +39,32 @@ class RecipesController < ApplicationController
 		end
 	end
 
+	def new_food
+		@food = Food.new
+
+		render :new_food
+	end
+
+	def create_food
+		@food = Food.new(food_params)
+
+		if @food.save
+			@recipe = Recipe.find(params[:recipe_id])
+			@recipe.foods << food
+
+			redirect_to recipe_path(@recipe)
+		else
+			render :new_food
+		end
+	end
+
 	private
 
 	def recipe_params
 		params.require(:recipe).permit(:name, :cooking_time, :preparation_time, :description, :status, :user_id)
+	end
+
+	def food_params
+		params.require(:food).permit(:name, :measurement_unit, :price)
 	end
 end
