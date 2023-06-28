@@ -9,4 +9,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_many :inventories
+  has_many :recipes
 end
