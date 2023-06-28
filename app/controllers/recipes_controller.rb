@@ -19,7 +19,6 @@ class RecipesController < ApplicationController
 				format.html { redirect_to recipe_path(@recipe), notice: 'Recipe created succesfully!' }
 				format.json { render :show, status: :created, location: @recipe }
 			else
-				puts @recipe.errors.full_messages.inspect
 				format.html { redirect_to new_recipe_path, alert: 'Recipe not created!' }
 				format.json { render json: @recipe.errors, status: :unprocessable_entity }
 			end
@@ -30,6 +29,7 @@ class RecipesController < ApplicationController
 		@recipe = Recipe.find(params[:id])
 		if @recipe.destroy
 			flash[:notice] = 'Recipe deleted successfully!'
+			redirect_to recipes_path
 		else
 			flash[:alert] = 'Recipe not deleted!'
 			redirect_to recipes_path
