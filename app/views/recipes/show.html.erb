@@ -54,6 +54,13 @@
 				</tr>
 			</thead>
 			<tbody>
+			<% @recipe.food_recipes.each do |food_recipe| %>
+				<tr>
+					<td><%=food_recipe.food.name %></td>
+					<td><%=food_recipe.quantity %></td>
+					<td><%=food_recipe.quantity * food_recipe.food.price %></td>
+				</tr>
+			<% end %>
 			</tbody>
 		<% end %>
 	</table>
