@@ -1,19 +1,24 @@
 class RecipeFoodsController < ApplicationController
-  def new_food
+  def new
     @recipe = Recipe.find(params[:recipe_id])
-    @food = Food.find(params[:food_id])
-    @recipe_food = RecipeFood.new(recipe: @recipe, food: @food)
+    @recipe_food = RecipeFood.new(recipe_id: params[:recipe_id])
+    @foods = Food.all
   end
 
-  def create_food
+  def create
     @recipe = Recipe.find(params[:recipe_id])
-    @food = Food.find(params[:food_id])
-    @recipe_food = RecipeFood.new(recipe: @recipe, food: @food, quantity: params[:food][:quantity])
+    @recipe_food = @recipe.recipe_foods.build(recipe_food_params)
   
     if @recipe_food.save
+      flash[:notice] = 'Food linked to recipe successfully!'
       redirect_to recipe_path(@recipe)
     else
-      render :new_food
+      @food = Food.all
+      render :new
     end
+  end
+
+  def recipe_food_params
+    params.require(:recipe_food).permit(:recipe_id, :food_id, :quantity)
   end
 end

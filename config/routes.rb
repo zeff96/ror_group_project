@@ -11,9 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  shallow do
-    resources :recipes do
-      resources :foods
-    end
+  resources :recipes do
+    resources :recipe_foods, only: %i[new create]
   end
 end
