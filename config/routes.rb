@@ -10,8 +10,14 @@ Rails.application.routes.draw do
       root to: "devise/sessions#new", as: :unauthenticated_root
     end
   end
+
+  resources :recipes do
+    resources :recipe_foods
+  end
+
+  resources :inventories
+
+  get 'shopping_list', to: 'recipes#shopping_list', as: 'shopping_list'
   
   resources :foods
-  
-
 end
