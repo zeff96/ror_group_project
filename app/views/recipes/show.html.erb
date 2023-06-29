@@ -28,7 +28,7 @@
 									<%= f.collection_select :inventory_id, @inventories, :id, :name, prompt: '.. Select Inventory ..' %>
 								<% end %>
 								<div>
-									<%= link_to 'Generate', new_recipe_path, class: 'btn btn-outline-dark btn-sm' %>
+									<%= link_to 'Generate', shopping_list_path, class: 'btn btn-outline-dark btn-sm' %>
 								</div>
 							</div>
 						</div>

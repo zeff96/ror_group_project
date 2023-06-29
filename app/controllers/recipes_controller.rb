@@ -40,6 +40,9 @@ class RecipesController < ApplicationController
 		end
 	end
 
+	def shopping_list
+	end
+
 	private
 
 	def recipe_params
