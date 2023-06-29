@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :recipe_foods
   end
 
-  resources :inventories
+  resources :inventories do
+    resources :inventory_foods
+  end
 
   get 'shopping_list', to: 'recipes#shopping_list', as: 'shopping_list'
   
