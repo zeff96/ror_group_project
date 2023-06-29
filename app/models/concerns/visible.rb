@@ -7,7 +7,7 @@ module Visible
     validates :status, inclusion: { in: VALID_STATUSES }
   end
 
-  def private?
-    status == 'private'
+  def public?
+    status == 'public'
   end
 end

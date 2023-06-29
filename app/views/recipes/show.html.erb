@@ -1,11 +1,13 @@
 <section>
-	<% if @recipe.status == 'public' || @recipe.user == current_user %>
+	<% if @recipe.public? || @recipe.user == current_user %>
 		<h2 class="text-center mb-3"><%= @recipe.name %></h2>
 		<div class="d-flex justify-content-between align-items-center mb-3">
 			<span>Preparation Time: <%= @recipe.preparation_time %></span>
 			<div class="form-check form-switch form-check-reverse">
-				<input class="form-check-input" type="checkbox" id="flexSwitchCheckReverse">
-				<label class="form-check-label" for="flexSwitchCheckReverse">Public</label>
+				<div class="form-check form-switch form-check-reverse">
+					<%= check_box_tag :status, 'public', @recipe.public?, id: 'status-toggle', class: 'form-check-input' %>
+					<%= label_tag 'status-toggle', 'Public', class: 'form-check-label' %>
+				</div>
 			</div>
 		</div>
 		<span class="d-block mb-3">Cooking Time: <%= @recipe.cooking_time %></span>
