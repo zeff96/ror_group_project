@@ -40,10 +40,11 @@ class RecipesController < ApplicationController
   end
 
   def shopping_list
-    recipe_id = params[:recipe_id]
-    params[:inventory_id]
+    @recipe_id = params[:recipe_id]
+    @inventory_id = params[:inventory_id]
 
-    @recipe = recipe_id
+    @recipe = Recipe.find(@recipe_id)
+    @inventory = Inventory.find(@inventory_id)
   end
 
   private
