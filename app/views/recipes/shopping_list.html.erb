@@ -3,11 +3,11 @@
 <section>
   <div class="d-flex justify-content-between align-items-center">
     <div>
-      <p>Amount of food to buy: </p>
-      <p>Total value of food needed: </p>
+      <p>Amount of food to buy: <span><%=%></span> </p>
+      <p>Total value of food needed:<span><%%></span> </p>
     </div>
     <div>
-      <p>Recipe:</p>
+      <p>Recipe: <%= link_to @recipe.name, recipe_path(@recipe) %></p>
       <p>Inventory:</p>
     </div>
   </div>

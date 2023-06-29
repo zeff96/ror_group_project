@@ -41,6 +41,10 @@ class RecipesController < ApplicationController
 	end
 
 	def shopping_list
+		recipe_id = params[:recipe_id]
+		inventory_id = params[:inventory_id]
+
+		@recipe = recipe_id
 	end
 
 	private

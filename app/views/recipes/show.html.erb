@@ -24,12 +24,11 @@
 						<div class="modal-body">
 							<span>Choose an inventory to use</span>
 							<div class="d-flex justify-content-between align-items-center mt-3">
-								<%= form_with(model: @inventory) do |f| %>
-									<%= f.collection_select :inventory_id, @inventories, :id, :name, prompt: '.. Select Inventory ..' %>
-								<% end %>
-								<div>
-									<%= link_to 'Generate', shopping_list_path, class: 'btn btn-outline-dark btn-sm' %>
-								</div>
+							<%= form_with(url: shopping_list_path, method: :get) do |f| %>
+								<%= f.hidden_field :recipe_id, value: @recipe.id %>
+								<%= f.collection_select :inventory_id, @inventories, :id, :name, { prompt: '.. Select Inventory ..' }, id: 'inventory-select' %>
+								<%= f.submit 'Generate', class: 'btn btn-outline-dark btn-sm' %>
+							<% end %>
 							</div>
 						</div>
 					</div>
