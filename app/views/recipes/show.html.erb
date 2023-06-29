@@ -24,13 +24,9 @@
 						<div class="modal-body">
 							<span>Choose an inventory to use</span>
 							<div class="d-flex justify-content-between align-items-center mt-3">
-								<div class="dropdown-center">
-									<button class="btn btn-outline-dark btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-										..Select inventory..
-									</button>
-									<ul class="dropdown-menu">
-									</ul>
-								</div>
+								<%= form_with(model: @inventory) do |f| %>
+									<%= f.collection_select :inventory_id, @inventories, :id, :name, prompt: '.. Select Inventory ..' %>
+								<% end %>
 								<div>
 									<%= link_to 'Generate', new_recipe_path, class: 'btn btn-outline-dark btn-sm' %>
 								</div>
