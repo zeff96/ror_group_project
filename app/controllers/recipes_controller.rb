@@ -50,9 +50,20 @@ class RecipesController < ApplicationController
     @missing_foods = @recipe.recipe_foods.reject {|food_recipe| inventory_foods_id.include?(food_recipe.food_id)}
   end
 
+  def update
+    @recipe = Recipe.find(params[:id])
+
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe)
+    else
+      flash[:alert] = 'Not updated!'
+      redirect_to recipe_path(@recipe)
+    end
+  end
+
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :cooking_time, :preparation_time, :description, :status, :user_id)
+    params.require(:recipe).permit(:name, :cooking_time, :preparation_time, :description, :public, :user_id)
   end
 end
