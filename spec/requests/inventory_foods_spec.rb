@@ -1,7 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe 'InventoryFoods', type: :request do
-  describe 'GET /index' do
-    pending "add some examples (or delete) #{__FILE__}"
+  describe 'POST :create' do
+    before do
+      @user = User.create(name: 'test', email: 'test2@example.com', password: 'password')
+      @user.confirm
+      sign_in @user
+      @inventory = Inventory.create(user: @user, name: 'Inventory1',
+                                    description: 'test description')
+      @test_food = Food.create(name: 'test food', measurement_unit: 2, price: 10, unit_quantity: 'kgs')
+    end
+    it 'creates a new inventorye_food' do
+      post inventory_inventory_foods_path(@inventory), params: { inventory_food: inventory_attributes }
+
+      expect(response.status).to eq(302)
+      expect(InventoryFood.count).to eq(1)
+      expect(InventoryFood.last.quantity).to eq(20)
+      expect(InventoryFood.last.inventory).to eq(@Inventory)
+      expect(InventoryFood.last.food).to eq(@test_food)
+    end
   end
 end
