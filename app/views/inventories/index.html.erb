@@ -1,0 +1,15 @@
+<% @inventories.each do |item|%>
+<div class="container">
+ <div class="row border border-2 p-3 mb-3">
+ <div class="col-4">
+ 
+ <%= link_to item.name, item, class: 'nav-link'%>
+ <% if can? :destroy, item %><%= link_to 'REMOVE', [item], method: :delete, data: {confirm: 'Are you sure!'}, class: 'fs-6 text-decoration-none' %><%end%>
+ </div>
+ <div class="col-8">
+  <%= item.description%>
+ </div>
+ </div>
+</div>
+<%end%>
+<%= link_to 'New Inventory', new_inventory_path(@inventory), class: 'btn btn-outline-dark btn-sm'%>
