@@ -1,5 +1,5 @@
 require 'rails_helper'
-RSpec.describe User, type: :model do
+RSpec.describe Food, type: :model do
   before :each do
     @food = Food.create(name: 'Jolof', measurement_unit: 3, price: 1)
   end

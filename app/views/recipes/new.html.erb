@@ -3,8 +3,8 @@
 <br>
 <%= form_with model: @recipe do |f| %>
 	<div>
-		<%= f.label :status %>
-		<%= f.select :status, %w[public private], selected: 'public'%>
+		<%= f.label :public %>
+		<%= f.select :public, options_for_select([['true', true], ['false', false]], selected: true) %>
 	</div>
 	<br>
 	<div>

@@ -1,10 +1,12 @@
 class InventoriesController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @inventories = Inventory.all
   end
 
   def show
-    @inventory = Inventory.includes(:inventory_foods).find(params[:id])
+    @inventory = Inventory.includes(inventory_foods: :food).find(params[:id])
     @inventory_id = @inventory.id
     @inventories = Inventory.all
 
@@ -36,7 +38,7 @@ class InventoriesController < ApplicationController
     else
       flash[:alert] = 'Inventory not deleted!'
     end
-    redirect_to recipes_path
+    redirect_to inventories_path
   end
 
   def shopping_list
