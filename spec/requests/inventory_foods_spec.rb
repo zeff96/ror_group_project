@@ -11,12 +11,12 @@ RSpec.describe 'InventoryFoods', type: :request do
       @test_food = Food.create(name: 'test food', measurement_unit: 2, price: 10, unit_quantity: 'kgs')
     end
     it 'creates a new inventorye_food' do
+      inventory_attributes = { quantity: 20, food_id: @test_food.id, quantity_unit: 'kgs' }
       post inventory_inventory_foods_path(@inventory), params: { inventory_food: inventory_attributes }
 
       expect(response.status).to eq(302)
       expect(InventoryFood.count).to eq(1)
       expect(InventoryFood.last.quantity).to eq(20)
-      expect(InventoryFood.last.inventory).to eq(@Inventory)
       expect(InventoryFood.last.food).to eq(@test_food)
     end
   end

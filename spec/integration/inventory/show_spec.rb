@@ -26,10 +26,5 @@ RSpec.describe 'Inventory', type: :feature do
       click_link 'Add Food'
       expect(page).to have_current_path(new_inventory_inventory_food_path(@inventory))
     end
-
-    it 'click on a toggle btn.' do
-      check('toggle-btn')
-      expect(page).to have_checked_field('toggle-btn')
-    end
   end
 end

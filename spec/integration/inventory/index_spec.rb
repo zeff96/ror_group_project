@@ -16,7 +16,7 @@ RSpec.describe 'Inventory  index page', type: :feature do
     @inventory1 = Inventory.create(user:, name: 'test inventory2',
                                    description: 'test test2')
 
-    visit '/inventory'
+    visit '/inventories'
   end
 
   it 'displays the list of inventories' do
