@@ -38,7 +38,9 @@
 					</div>
 				</div>
 			</div>
-			<%= link_to 'Add ingredient', new_recipe_recipe_food_path(recipe_id: @recipe_id), class: 'btn btn-outline-dark btn-sm' %>
+			<% if can? :new, @recipe %>
+				<%= link_to 'Add ingredient', new_recipe_recipe_food_path(recipe_id: @recipe_id), class: 'btn btn-outline-dark btn-sm' %>
+			<% end %>
 		</div>
 	<% end %>
 	<hr/>
