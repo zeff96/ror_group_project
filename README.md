@@ -40,8 +40,9 @@ Catalog of my things is a Ruby console app that allows users to add and manage l
 
 ### Key Features <a name="key-features"></a>
 
-- **Add items**
-- **List Items**
+- **Inventory Foods**
+- **Recipe Foods**
+- **Foods**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -57,7 +58,7 @@ In order to run this project you need: Ruby
 
 Clone the repo, and install the dependencies
 ```sh
-git@github.com:zeff96/catalog_of_my_things.git
+https://github.com/zeff96/ror_group_project
 ```
 
 ### Install
@@ -73,7 +74,7 @@ bundle install
 To run the project, execute the following command:
 
 ```sh
-ruby main.rb
+rails server
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -85,17 +86,22 @@ ruby main.rb
 - GitHub: [zeff96](https://github.com/zeff96)
 - LinkedIn: [zeff adeka](https://www.linkedin.com/in/zeff-adeka/)
 
-👤 **Mugisha Innocent**
+👤 **Queenter Juma**
 
-- GitHub: [Tafloninno](https://github.com/Tafloninno)
-- LinkedIn: [mugisha-innocent](https://www.linkedin.com/in/mugisha-innocent/)
+- GitHub: [QueenterJuma](https://github.com/QueenterJuma)
+- LinkedIn: [queenteranyangojuma](https://www.linkedin.com/in/queenteranyangojuma/)
+
+👤 **Ismail Munyentwari**
+
+- GitHub: [ismailmunyentwari9](https://github.com/ismailmunyentwari9)
+- LinkedIn: [munyentwari-ismail-754718191](https://linkedin.com/in/munyentwari-ismail-754718191)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **remove a selected book**
-- [ ] **add genre to selected book**
+- [ ] **Add food**
+- [ ] **Mobile App**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -103,7 +109,7 @@ ruby main.rb
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/zeff96/catalog_of_my_things/issues).
+Feel free to check the [issues page](https://github.com/zeff96/ror_group_project/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
