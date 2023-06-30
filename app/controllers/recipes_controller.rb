@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.includes(recipe_foods: :food).find(params[:id])
     @recipe_id = @recipe.id
     @inventories = Inventory.all
-  
+
     render :show
   end
 
@@ -47,18 +47,14 @@ class RecipesController < ApplicationController
     @inventory = Inventory.find(@inventory_id)
 
     inventory_foods_id = @inventory.foods.pluck(:id)
-    @missing_foods = @recipe.recipe_foods.reject {|food_recipe| inventory_foods_id.include?(food_recipe.food_id)}
+    @missing_foods = @recipe.recipe_foods.reject { |food_recipe| inventory_foods_id.include?(food_recipe.food_id) }
   end
 
   def update
     @recipe = Recipe.find(params[:id])
 
-    if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
-    else
-      flash[:alert] = 'Not updated!'
-      redirect_to recipe_path(@recipe)
-    end
+    flash[:alert] = 'Not updated!' unless @recipe.update(recipe_params)
+    redirect_to recipe_path(@recipe)
   end
 
   private
