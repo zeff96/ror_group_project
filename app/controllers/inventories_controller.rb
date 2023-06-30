@@ -36,7 +36,7 @@ class InventoriesController < ApplicationController
     else
       flash[:alert] = 'Inventory not deleted!'
     end
-    redirect_to recipes_path
+    redirect_to inventories_path
   end
 
   def shopping_list
