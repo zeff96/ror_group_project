@@ -11,7 +11,7 @@ RSpec.describe 'Recipe', type: :feature do
     fill_in 'Password', with: user.password
     click_button 'Log in'
 
-    @recipe = Recipe.create(user: user, name: 'test recipe1', preparation_time: "1 hr", cooking_time: "1.5 hrs",
+    @recipe = Recipe.create(user:, name: 'test recipe1', preparation_time: '1 hr', cooking_time: '1.5 hrs',
                             description: 'test test1', public: true)
 
     visit "/recipes/#{@recipe.id}"

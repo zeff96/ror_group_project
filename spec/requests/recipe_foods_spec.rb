@@ -7,11 +7,11 @@ RSpec.describe RecipeFood, type: :request do
       @user.confirm
       sign_in @user
       @recipe = Recipe.create(user: @user, name: 'test recipe',
-                              preparation_time: "1 Hr",
-                              cooking_time: "1.5 hrs",
+                              preparation_time: '1 Hr',
+                              cooking_time: '1.5 hrs',
                               description: 'test description',
                               public: true)
-      @test_food = Food.create(name: 'test food', measurement_unit: 2, price: 10, unit_quantity: "kgs")
+      @test_food = Food.create(name: 'test food', measurement_unit: 2, price: 10, unit_quantity: 'kgs')
     end
     it 'creates a new recipe_food' do
       recipe_attributes = { quantity: 20, food_id: @test_food.id, quantity_unit: 'kgs' }

@@ -20,7 +20,10 @@ RSpec.describe 'Recipe', type: :request do
   end
 
   describe 'GET /recipes/:id' do
-    let(:recipe) { Recipe.create(user: @user, name: 'test recipe', preparation_time: '1 hr', cooking_time: '1.5 hrs', description: 'test description', public: true) }
+    let(:recipe) do
+      Recipe.create(user: @user, name: 'test recipe', preparation_time: '1 hr', cooking_time: '1.5 hrs',
+                    description: 'test description', public: true)
+    end
 
     it 'should respond with success' do
       get recipe_path(recipe)
@@ -40,10 +43,12 @@ RSpec.describe 'Recipe', type: :request do
 
   describe 'POST /recipes' do
     it 'creates a new recipe' do
-      expect {
-        post '/recipes', params: { recipe: { name: 'New Recipe', cooking_time: '2 hrs', preparation_time: '1 hr', description: 'New recipe description', public: true, user_id: @user.id } }
-      }.to change { Recipe.count }.by(1)
-  
+      expect do
+        post '/recipes',
+             params: { recipe: { name: 'New Recipe', cooking_time: '2 hrs', preparation_time: '1 hr',
+                                 description: 'New recipe description', public: true, user_id: @user.id } }
+      end.to change { Recipe.count }.by(1)
+
       created_recipe = Recipe.last
       expect(created_recipe.name).to eq('New Recipe')
       expect(created_recipe.cooking_time).to eq('2 hrs')
@@ -52,16 +57,21 @@ RSpec.describe 'Recipe', type: :request do
       expect(created_recipe.public).to be true
       expect(created_recipe.user_id).to eq(@user.id)
     end
-  
+
     it 'redirects to the created recipe' do
-      post '/recipes', params: { recipe: { name: 'New Recipe', cooking_time: '2 hrs', preparation_time: '1 hr', description: 'New recipe description', public: true, user_id: @user.id } }
+      post '/recipes',
+           params: { recipe: { name: 'New Recipe', cooking_time: '2 hrs', preparation_time: '1 hr',
+                               description: 'New recipe description', public: true, user_id: @user.id } }
       created_recipe = Recipe.last
       expect(response).to redirect_to(recipe_path(created_recipe))
     end
   end
 
   describe 'PATCH /recipes/:id' do
-    let(:recipe) { Recipe.create(user_id: @user.id, name: 'test recipe', preparation_time: '1 hr', cooking_time: '1.5 hrs', description: 'test description', public: true) }
+    let(:recipe) do
+      Recipe.create(user_id: @user.id, name: 'test recipe', preparation_time: '1 hr', cooking_time: '1.5 hrs',
+                    description: 'test description', public: true)
+    end
     let(:recipe_attributes) { { name: 'Updated Recipe' } }
 
     it 'updates recipe visibility' do
@@ -80,12 +90,15 @@ RSpec.describe 'Recipe', type: :request do
   end
 
   describe 'DELETE /recipes/:id' do
-    let!(:recipe) { Recipe.create(user: @user, name: 'test recipe', preparation_time: '1 hr', cooking_time: '1.5 hrs', description: 'test description', public: true) }
+    let!(:recipe) do
+      Recipe.create(user: @user, name: 'test recipe', preparation_time: '1 hr', cooking_time: '1.5 hrs',
+                    description: 'test description', public: true)
+    end
 
     it 'deletes a recipe' do
-      expect {
+      expect do
         delete recipe_path(recipe)
-      }.to change(Recipe, :count).by(-1)
+      end.to change(Recipe, :count).by(-1)
 
       expect(response).to redirect_to(recipes_path)
     end

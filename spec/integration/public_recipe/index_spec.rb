@@ -11,10 +11,17 @@ RSpec.describe 'User index page', type: :feature do
     fill_in 'Password', with: user.password
     click_button 'Log in'
 
-    @recipe = Recipe.create!(user_id: user.id, name: 'New public recipe', preparation_time: "1 hr", cooking_time: "1.5 hrs",
-                             description: 'Recipe description', public: true)
-    @recipe = Recipe.create!(user_id: user.id, name: 'New public recipe', preparation_time: "1 hr", cooking_time: "1.5 hrs",
-                             description: 'Recipe description', public: false)
+    recipe_attributes = {
+      user_id: user.id,
+      name: 'New public recipe',
+      preparation_time: '1 hr',
+      cooking_time: '1.5 hrs',
+      description: 'Recipe description'
+    }
+
+    @recipe = Recipe.create!(recipe_attributes.merge(public: true))
+    @recipe = Recipe.create!(recipe_attributes.merge(public: false))
+
     visit '/public_recipes'
   end
 
