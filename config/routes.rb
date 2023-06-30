@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   get 'shopping_list', to: 'recipes#shopping_list', as: 'shopping_list'
   
   resources :foods
+  resources :public_recipes, only: %i[index]
 end

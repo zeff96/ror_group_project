@@ -27,6 +27,6 @@ class InventoryFoodsController < ApplicationController
   end
 
   def inventory_food_params
-    params.require(:inventory_food).permit(:inventory_id, :food_id, :quantity)
+    params.require(:inventory_food).permit(:inventory_id, :food_id, :quantity, :quantity_unit)
   end
 end
