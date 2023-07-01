@@ -19,12 +19,12 @@ RSpec.describe 'Foods', type: :feature do
       expect(page).to have_content('Fish')
     end
     it 'A food measurement is displayed on the foods page' do
-        expect(page).to have_content('2.0')
-        expect(page).to have_content('3.0')
-      end
-      it 'A food price is displayed on the foods page' do
-        expect(page).to have_content("$#{@food1.measurement_unit * @food1.price}")
-        expect(page).to have_content("$#{@food.measurement_unit * @food.price}")
-      end
+      expect(page).to have_content('2.0')
+      expect(page).to have_content('3.0')
+    end
+    it 'A food price is displayed on the foods page' do
+      expect(page).to have_content("$#{@food1.measurement_unit * @food1.price}")
+      expect(page).to have_content("$#{@food.measurement_unit * @food.price}")
+    end
   end
 end
