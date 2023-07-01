@@ -11,27 +11,22 @@ RSpec.describe 'User index page', type: :feature do
     fill_in 'Password', with: user.password
     click_button 'Log in'
 
-    recipe_attributes = {
-      user_id: user.id,
-      name: 'New public recipe',
-      preparation_time: '1 hr',
-      cooking_time: '1.5 hrs',
-      description: 'Recipe description'
-    }
-
-    @recipe = Recipe.create!(recipe_attributes.merge(public: true))
-    @recipe = Recipe.create!(recipe_attributes.merge(public: false))
+    @public_recipe = Recipe.create!(user_id: user.id, name: 'public recipe', preparation_time: '1 hr',
+                                    cooking_time: '1.5 hrs', description: 'Recipe description', public: true)
+    @private_recipe = Recipe.create!(user_id: user.id, name: 'private recipe', preparation_time: '1 hr',
+                                     cooking_time: '1.5 hrs', description: 'Recipe description', public: false)
 
     visit '/public_recipes'
   end
 
   describe 'Recipe' do
     scenario 'Public recipe is displayed on public_recipes page' do
-      expect(page).to have_content('New public recipe')
+      puts @public_recipe.name
+      expect(page).to have_content(@public_recipe.name)
     end
 
     scenario 'Private recipe is not displayed on public_recipes page' do
-      expect(page).to_not have_content('New private recipe')
+      expect(page).not_to have_content(@private_recipe.name)
     end
   end
 end
